@@ -20,8 +20,11 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/purchases' element={<Purchases/>}/>
+       
         <Route path='/Product/:id' element={<ProductId/>}/>
+      </Routes>
+      <Routes>
+      <Route path='/purchases' element={<Purchases/>}/>
       </Routes>
       </Container>
     </HashRouter>

@@ -17,7 +17,7 @@ const Login = () => {
         axios.post("https://e-commerce-api.academlo.tech/api/v1/users/login/", data)
             .then(res => {
                 navigate('/')
-                localStorage
+                localStorage.setItem('token', res.data.data.token)
 
             })
             .catch(err => {

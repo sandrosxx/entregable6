@@ -22,17 +22,20 @@ const Home = () => {
         <div>
             <Row>
                 <Col lg={3}>
-                    {
-                        productsCategory.map(category => (
-                            <ListGroup.Item
-                                key={category.id}
-                                onClick={() => dispatch(idThunk(category.id))}
-                                style={{ cursor: 'pointer' }}
-                            >
-                                {category.name}
-                            </ListGroup.Item>
-                        ))
-                    }
+                    <ListGroup>
+
+                        {
+                            productsCategory.map(category => (
+                                <ListGroup.Item
+                                    key={category.id}
+                                    onClick={() => dispatch(idThunk(category.id))}
+                                    style={{ cursor: 'pointer' }}
+                                >
+                                    {category.name}
+                                </ListGroup.Item>
+                            ))
+                        }
+                    </ListGroup>
                 </Col>
 
                 <Col lg={9} >
@@ -56,33 +59,30 @@ const Home = () => {
                         </Button>
 
                     </InputGroup>
-                    <Row xs={1} md={2} className="g-4">
+                    <Row xs={1} md={2} lg={3} className="g-4">
                         {product.map((productitem) => (
-
-                            <ul key={productitem.id}>
-                                <Link to={`/Product/${productitem.id}`}>
-                                    <Col>
-                                        <Card >
-                                            <Card.Img variant="top" src={productitem.productImgs[0]} />
-                                            <Card.Body >
-                                                <Card.Title> {productitem.title}</Card.Title>
-                                                <Card.Text>
-                                                    <span>Price</span>
-                                                    <br />${productitem.price}
-                                                </Card.Text>
-                                                <Button variant="primary">add Cart</Button>
-                                            </Card.Body>
-                                        </Card>
-
-                                        {/* <Link to={`/Product/${productitem.id}`}> */}
-                                        {/* {productitem.title} */}
-                                        {/* <img src={productitem.productImgs[0]} width='100px' alt="" /> */}
-
-
-
-                                    </Col>
-                                </Link>
-                            </ul>
+                            <Col key={productitem.id}>
+                                <Card >
+                                    <Link to={`/Product/${productitem.id}`} style={{textDecoration:'none'}}>
+                                        <Card.Img
+                                            variant="top"
+                                            src={productitem.productImgs[0]}
+                                            style={{ height: 200, objectFit: 'contain' }}
+                                        />
+                                        <Card.Body >
+                                            <Card.Title> {productitem.title}</Card.Title>
+                                            <Card.Text>
+                                                <span>Price</span>
+                                                <br />${productitem.price}
+                                            </Card.Text>
+                                            <Button variant="primary">add Cart</Button>
+                                        </Card.Body>
+                                    </Link>
+                                </Card>
+                                {/* <Link to={`/Product/${productitem.id}`}> */}
+                                {/* {productitem.title} */}
+                                {/* <img src={productitem.productImgs[0]} width='100px' alt="" /> */}
+                            </Col>
                         ))}
                     </Row>
                 </Col>
