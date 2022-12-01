@@ -88,4 +88,16 @@
       opacity: 0;
     }
   }
-  
+  .purchasescar{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    cursor: pointer;
+  }
+  .box{
+    border: 1px solid;
+    
+    width: 65px;
+    text-align: center;
+    
+  }

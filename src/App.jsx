@@ -23,9 +23,9 @@ function App() {
         <Route path='/login' element={<Login/>}/>
        
         <Route path='/Product/:id' element={<ProductId/>}/>
-      </Routes>
-      <Routes element= {<ProtectedRoutes/>}>
-      <Route path='/purchases' element={<Purchases/>}/>
+        <Route element= {<ProtectedRoutes/>}>
+        <Route path='/purchases' element={<Purchases/>}/>
+        </Route>
       </Routes>
       </Container>
     </HashRouter>

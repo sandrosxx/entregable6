@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
-import { Col, ListGroup, Row } from 'react-bootstrap';
+import { Button, Card, Col, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getPurchasesThunk } from '../../store/slice/purchases.slice';
 
 const Purchases = () => {
@@ -12,22 +13,28 @@ const Purchases = () => {
 
     return (
         <div>
-            <h1>purchases</h1>
+            <h1>My purchases</h1>
             <Row>
                 <Col>
                     <ListGroup variant='flush'>
                         {purchases.map(purchase => (
-
                             <ListGroup.Item key={purchase.id}>
                                 {purchase.cart.products.map(product => (
-                                    <ListGroup.Item key={product.id}>
-                                        {/* <Link to={`/Product/${product.id}`} style={{ textDecoration: 'none' }}> */}
-                                            <h3>{product.createdAt}</h3>
-                                            <h3>{product.title}</h3>
-                                            <h3>{ }</h3>
-                                            <h3>${product.price}</h3>
-                                        {/* </Link> */}
-                                    </ListGroup.Item>
+                                    <Card key={product.id}>
+                                        <Link to={`/Product/${product.id}`} style={{ textDecoration: 'none' }}>
+                                            <Card.Header as="h5">{product?.createdAt}</Card.Header>
+                                            <Card.Body className='purchasescar'>
+                                                <Card.Text>{product.title}</Card.Text>
+                                                <Card.Text className='box'>
+                                                    {product.productsInCart.quantity}
+                                                </Card.Text>
+                                                <Card.Text>
+                                                    ${product.price}
+                                                </Card.Text>
+                                            </Card.Body>
+                                        </Link>
+                                    </Card>
+
                                 ))}
                             </ListGroup.Item>
                         ))}
