@@ -15,6 +15,7 @@ function App() {
 
   return (
     <HashRouter>
+      
       <NavBar/>
       {isLoading && <LoadingScreen/>}
       <Container className='my-5'>

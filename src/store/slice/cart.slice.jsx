@@ -26,7 +26,8 @@ export const postCartThunk = (productToCart) => (dispatch) => {
     return axios
         .post('https://e-commerce-api.academlo.tech/api/v1/cart', productToCart, getConfig())
         .then(() => dispatch(getCartThunk()))
-        .finally(() => dispatch(setIsloading(false)));
+        .finally(() => dispatch(setIsloading(false)))
+        .catch(error => console.log(error.response?.data));
 }
 export const checkoutCartThunk = () => (dispatch) => {
     dispatch(setIsloading(true));

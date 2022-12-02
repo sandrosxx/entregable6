@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Button, Card, Offcanvas } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -14,7 +14,7 @@ const Cart = ({ handleClose, show }) => {
         <>
             <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>Offcanvas</Offcanvas.Title>
+                    <Offcanvas.Title>Shopping cart</Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                     {cart.map(product => (
@@ -27,7 +27,7 @@ const Cart = ({ handleClose, show }) => {
                                         {product.productsInCart.quantity}
                                     </Card.Text>
                                     <Card.Text>
-                                       Total: ${product.price}
+                                        Total: ${product.price}
                                     </Card.Text>
                                 </Card.Body>
                             </Link>
@@ -35,7 +35,8 @@ const Cart = ({ handleClose, show }) => {
 
 
                     ))}
-                    <Button onClick={() => dispatch(checkoutCartThunk())}>comprar</Button>
+
+                    <Button onClick={() => dispatch(checkoutCartThunk())}>Checkout</Button>
                 </Offcanvas.Body>
             </Offcanvas>
         </>
